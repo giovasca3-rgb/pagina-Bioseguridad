@@ -1,0 +1,334 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.portada {
+    width: 100%;
+    height: 100vh;
+
+    background: linear-gradient(135deg, #0077b6, #00b4d8, #90e0ef);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.contenido {
+    color: white;
+}
+
+.icono {
+    font-size: 70px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 55px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+h1 span {
+    color: #fff200;
+}
+
+h2 {
+    font-size: 38px;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.imagen img {
+    max-width: 26%;  
+    height: auto;    
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+button {
+    background-color: white;
+    color: #0077b6;
+
+    border: none;
+    padding: 15px 45px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #fff200;
+    color: #0077b6;
+
+    transform: scale(1.08);
+}
+
+button:hover {
+    background-color: #fff200;
+    color: #0077b6;
+}
+.contenido {
+    color: white;
+    animation: aparecer 1.5s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MENÚ PRINCIPAL */
+
+
+.menu {
+    width: 100%;
+    background-color: #0077b6;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 50px;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.menu nav {
+    display: flex;
+    gap: 25px;
+}
+
+.menu nav a {
+    color: white;
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.menu nav a:hover {
+    color: #fff200;
+}
+
+
+
+
+.principal {
+    min-height: 500px;
+
+    background: linear-gradient(
+        135deg,
+        #caf0f8,
+        #90e0ef
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 50px;
+}
+
+.principal h1 {
+    color: #0077b6;
+
+    font-size: 50px;
+
+    margin-bottom: 10px;
+}
+
+.principal h2 {
+    color: #023e8a;
+
+    font-size: 35px;
+
+    margin-bottom: 20px;
+}
+
+.principal p {
+    color: #333;
+
+    font-size: 20px;
+
+    max-width: 700px;
+
+    margin: auto;
+
+    line-height: 1.6;
+
+    margin-bottom: 30px;
+}
+
+
+
+
+.boton {
+    display: inline-block;
+
+    background-color: #0077b6;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 15px 35px;
+
+    border-radius: 30px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.boton:hover {
+    background-color: #023e8a;
+
+    transform: scale(1.05);
+}
+
+.imagen-ajustada {
+  width: 700px;  
+  height: auto;  
+  display: block; 
+  margin: 0 auto; 
+}
+
+/* ============================= */
+/* CONTACTANOS */
+/* ============================= */
+
+.contacto {
+    padding: 70px 10%;
+
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        #caf0f8,
+        #90e0ef
+    );
+}
+
+.contacto h2 {
+    color: #0077b6;
+
+    font-size: 38px;
+
+    margin-bottom: 15px;
+
+    letter-spacing: 2px;
+}
+
+.contacto-subtitulo {
+    max-width: 700px;
+
+    margin: 0 auto 35px;
+
+    color: #3d5961;
+
+    font-size: 17px;
+}
+
+.contacto-contenedor {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+}
+
+.contacto-card {
+    width: 300px;
+
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+
+    transition: 0.3s;
+}
+
+.contacto-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.20);
+}
+
+.contacto-icono {
+    font-size: 45px;
+
+    margin-bottom: 12px;
+}
+
+.contacto-card h3 {
+    color: #0077b6;
+
+    font-size: 21px;
+
+    margin-bottom: 10px;
+}
+
+.contacto-card p {
+    color: #444;
+
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+
+

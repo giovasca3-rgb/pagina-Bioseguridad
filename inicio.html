@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Normas de Bioseguridad en Inyectoterapia</title>
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #eef9fc;
+      color: #18343d;
+      line-height: 1.6;
+    }
+
+    /* MENÚ */
+    .top-menu {
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+      background: linear-gradient(90deg, #006ea8, #00a6c7);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,.18);
+    }
+
+    .top-logo {
+      color: white;
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+
+    .top-menu nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .top-menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .top-menu a:hover {
+      color: #fff200;
+      transform: translateY(-2px);
+    }
+
+    /* PORTADA INTERNA */
+    .hero {
+      min-height: 360px;
+      padding: 70px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.35), transparent 28%),
+        linear-gradient(135deg, #b8f0f8, #73d4e8, #1688bd);
+      color: white;
+    }
+
+    .hero-box {
+      max-width: 950px;
+      animation: aparecer 1s ease;
+    }
+
+    .hero-icon {
+      font-size: 65px;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.05;
+      letter-spacing: 2px;
+      text-shadow: 0 4px 12px rgba(0,0,0,.2);
+    }
+
+    .hero h1 span {
+      color: #fff200;
+    }
+
+    .hero p {
+      margin-top: 18px;
+      font-size: 21px;
+      font-weight: 500;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* CONTENIDO */
+    .shell {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 45px 24px;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 30px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 92px;
+      align-self: start;
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.10);
+      border-top: 5px solid #00a6c7;
+    }
+
+    .toc-title {
+      color: #006ea8;
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 15px;
+    }
+
+    .toc ol {
+      list-style: none;
+    }
+
+    .toc li {
+      margin: 7px 0;
+    }
+
+    .toc a {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #24515c;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 8px;
+      border-radius: 9px;
+      transition: .25s;
+    }
+
+    .toc a:hover {
+      background: #e4f8fc;
+      color: #0077b6;
+      transform: translateX(4px);
+    }
+
+    .n, .idx, .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #0077b6;
+      color: white;
+      border-radius: 50%;
+      font-weight: 800;
+    }
+
+    .toc .n {
+      min-width: 30px;
+      height: 30px;
+      font-size: 11px;
+    }
+
+    main {
+      min-width: 0;
+    }
+
+    .block {
+      background: white;
+      margin-bottom: 28px;
+      padding: 35px;
+      border-radius: 22px;
+      box-shadow: 0 8px 28px rgba(0,0,0,.09);
+      border-left: 6px solid #00a6c7;
+      scroll-margin-top: 100px;
+    }
+
+    .block-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .idx {
+      width: 45px;
+      height: 45px;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .block h2 {
+      color: #006ea8;
+      font-size: clamp(25px, 3vw, 36px);
+      line-height: 1.15;
+    }
+
+    .block-sub {
+      color: #5b7279;
+      font-size: 17px;
+      margin-bottom: 25px;
+    }
+
+    .moments, .cards, .correctos-grid, .via-grid, .residuos-grid, .ppe-row {
+      display: grid;
+      gap: 18px;
+    }
+
+    .moments {
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    }
+
+    .moment, .card, .correcto, .ppe-item, .via-card, .bin-card, .flow-step {
+      background: #f5fcfe;
+      border: 1px solid #cdeaf0;
+      border-radius: 16px;
+      padding: 22px;
+      transition: .25s;
+    }
+
+    .moment:hover, .card:hover, .correcto:hover, .ppe-item:hover, .via-card:hover, .bin-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 24px rgba(0,119,182,.12);
+      border-color: #66cbdc;
+    }
+
+    .moment::before {
+      content: attr(data-n);
+      display: flex;
+      width: 38px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: #0077b6;
+      color: white;
+      font-weight: 900;
+    }
+
+    .moment h3, .ppe-item h3, .card h3, .correcto h3, .via-card h3, .bin-card h3 {
+      color: #075b73;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .moment p, .ppe-item p, .card p, .correcto p, .via-card p, .bin-card p, .flow-step p {
+      color: #4c6269;
+      font-size: 15px;
+    }
+
+    .ppe-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .ppe-item {
+      text-align: center;
+    }
+
+    .ic {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #dff7fb;
+      font-size: 32px;
+    }
+
+    .cards.cols-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cards.cols-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .k {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #075b73;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .card .num, .correcto .num, .flow-step .num {
+      width: 34px;
+      height: 34px;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .correctos-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .correcto .k h3 {
+      margin: 0;
+    }
+
+    .via-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .via-card {
+      overflow: hidden;
+    }
+
+    .diagram {
+      min-height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e9f9fc;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .angle-tag {
+      display: inline-block;
+      background: #0077b6;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    dl {
+      font-size: 14px;
+    }
+
+    dt {
+      color: #0077b6;
+      font-weight: 900;
+      margin-top: 8px;
+    }
+
+    dd {
+      margin-left: 0;
+      color: #536a71;
+    }
+
+    .callout {
+      padding: 20px;
+      border-radius: 14px;
+      background: #fff8dc;
+      border-left: 5px solid #f0b400;
+      color: #624f16;
+    }
+
+    .residuos-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .bin-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .bin-swatch {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 18px;
+    }
+
+    .flow-step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .basis {
+      margin-top: 25px;
+      padding: 15px 18px;
+      background: #edf9fb;
+      border-radius: 12px;
+      color: #52686f;
+      font-size: 13px;
+    }
+
+    footer {
+      background: #063f54;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+    }
+
+    footer .fuentes {
+      margin-top: 8px;
+      opacity: .8;
+    }
+
+    @media (max-width: 900px) {
+      .top-menu {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: static;
+      }
+
+      .ppe-row, .cards.cols-3, .via-grid, .residuos-grid, .flow-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .correctos-grid, .cards.cols-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .top-menu nav {
+        gap: 10px;
+      }
+
+      .top-menu nav a {
+        font-size: 13px;
+      }
+
+      .shell {
+        padding: 25px 14px;
+      }
+
+      .block {
+        padding: 22px 18px;
+      }
+
+      .hero {
+        min-height: 300px;
+      }
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <header class="top-menu">
+    <div class="top-logo">🩺 Bioseguridad</div>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#higiene">Higiene</a>
+      <a href="#epp">Protección</a>
+      <a href="#punzocortante">Punzocortantes</a>
+      <a href="#correctos">10 correctos</a>
+      <a href="#vias">Vías</a>
+      <a href="#residuos">Residuos</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="hero-box">
+      <div class="hero-icon">🩺</div>
+      <h1>NORMAS DE <span>BIOSEGURIDAD</span></h1>
+      <h2>EN INYECTOTERAPIA</h2>
+      <p>Seguridad • Prevención • Cuidado</p>
+    </div>
+  </section>
+
+  <div class="shell" id="contenido">
+
+  <nav class="toc">
+    <div class="toc-title">CONTENIDO</div>
+    <ol>
+      <li><a href="#higiene"><span class="n"></span>Higiene de manos</a></li>
+      <li><a href="#epp"><span class="n"></span>Equipo de protección</a></li>
+      <li><a href="#punzocortante"><span class="n"></span>Material punzocortante</a></li>
+      <li><a href="#preparacion"><span class="n"></span>Preparación y administración</a></li>
+      <li><a href="#correctos"><span class="n"></span>Los 10 correctos</a></li>
+      <li><a href="#vias"><span class="n"></span>Vías de administración</a></li>
+      <li><a href="#residuos"><span class="n"></span>Manejo de residuos</a></li>
+      <li><a href="#fuentes"><span class="n"></span>Marco legal</a></li>
+      <li><a href="#contactanos"><span class="n"></span>Contáctanos</a></li>
+   
+    </ol>
+  </nav>
+
+  <main>
+
+    <!-- 01 Higiene de manos -->
+    <section class="block" id="higiene">
+      <div class="block-head"><h2>Higiene de manos </h2></div>
+      <p class="block-sub">El lavado de manos se realiza en cinco momentos definidos por la OMS durante la atención al paciente, sin excepción.</p>
+
+      <div class="moments">
+        <div class="moment" data-n="1"><h3>Antes del contacto con el paciente</h3><p>Al aproximarse, previo a tocarlo.</p></div>
+        <div class="moment" data-n="2"><h3>Antes de una tarea aséptica</h3><p>Antes de preparar o administrar el inyectable.</p></div>
+        <div class="moment" data-n="3"><h3>Después del riesgo de exposición a fluidos corporales</h3><p>Incluso si se usaron guantes.</p></div>
+        <div class="moment" data-n="4"><h3>Después del contacto con el paciente</h3><p>Al finalizar el procedimiento.</p></div>
+        <div class="moment" data-n="5"><h3>Después del contacto con el entorno del paciente</h3><p>Camilla, superficies, equipo cercano.</p></div>
+      </div>
+      <img src="img/manos.jpeg" alt="manos" class="imagen-ajustada">
+      <div class="basis"><b>Base normativa:</b> NTS N° 144-MINSA/2018/DIGESA "Gestión Integral y Manejo de Residuos Sólidos en Establecimientos de Salud" y directrices de la OMS.</div>
+      
+    </section>
+
+    <!-- 02 EPP -->
+    <section class="block" id="epp">
+      <div class="block-head"><h2>Equipo de protección personal</h2></div>
+      <p class="block-sub">Barrera mínima obligatoria antes de iniciar cualquier procedimiento de inyectoterapia.</p>
+
+      <div class="ppe-row">
+        <div class="ppe-item">
+          <div class="ic">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#12566B" stroke-width="1.6"><path d="M2 9c2-2 5-3 10-3s8 1 10 3c-2 3-6 5-10 5S4 12 2 9z"/><circle cx="12" cy="9" r="1.4" fill="#12566B" stroke="none"/></svg>
+          </div>
+          <h3>Mascarilla</h3>
+          <p>Cubre nariz y boca durante todo el procedimiento.</p>
+        </div>
+        <div class="ppe-item">
+          <div class="ic">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#12566B" stroke-width="1.6"><path d="M7 3v6l-3 3v7a2 2 0 002 2h9a2 2 0 002-2v-7l-3-3V3"/><path d="M9 3h6"/></svg>
+          </div>
+          <h3>Guantes descartables</h3>
+          <p>Un par por paciente, descarte inmediato tras el uso.</p>
+        </div>
+        <div class="ppe-item">
+          <div class="ic">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#12566B" stroke-width="1.6"><path d="M8 2l1 3h6l1-3"/><path d="M9 5L4 8v13a1 1 0 001 1h14a1 1 0 001-1V8l-5-3"/><path d="M12 5v16"/></svg>
+          </div>
+          <h3>Mandil o uniforme clínico</h3>
+          <p>Limpio, exclusivo del área de atención.</p>
+        </div>
+      </div>
+
+      <div class="basis"><b>Base normativa:</b> D.S. N° 011-2019-TR "Reglamento de Seguridad y Salud en el Trabajo" y NTS N° 127-MINSA/2016/DIGESP "Salud Ocupacional en el Sector Salud".</div>
+    </section>
+
+    <!-- 03 Punzocortante -->
+    <section class="block" id="punzocortante">
+      <div class="block-head"><h2>Manejo seguro de material punzocortante</h2></div>
+      <p class="block-sub">La aguja usada se descarta de inmediato; nunca se manipula dos veces.</p>
+
+      <div class="cards cols-3">
+        <div class="card">
+          <div class="k"><span class="num">1</span>Contenedor rígido</div>
+          <p>De alta resistencia, con símbolo de bioseguridad, llenado máximo hasta 3/4 partes.</p>
+        </div>
+        <div class="card">
+          <div class="k"><span class="num">2</span>No recapsular agujas</div>
+          <p>Nunca reencapuchar con las dos manos: es la causa más frecuente de pinchazo accidental.</p>
+        </div>
+        <div class="card">
+          <div class="k"><span class="num">3</span>Desechar inmediatamente</div>
+          <p>Apenas concluida la inyección, sin dejar la aguja sobre superficies intermedias.</p>
+        </div>
+      </div>
+
+      <div class="basis"><b>Base normativa:</b> Ley N° 29783 "Ley de Seguridad y Salud en el Trabajo" y NTS N° 144-MINSA/2018/DIGESA para gestión de residuos biocontaminados.</div>
+      <img src="img/material.jpeg" alt="material" class="imagen-ajustada">
+    </section>
+
+    <!-- 04 Preparacion -->
+    <section class="block" id="preparacion">
+      <div class="block-head"><h2>Preparación y administración segura</h2></div>
+      <p class="block-sub">Tres condiciones del entorno que deben cumplirse antes de puncionar al paciente.</p>
+
+      <div class="cards cols-3">
+        <div class="card">
+          <div class="k"><span class="num">1</span>Área de trabajo limpia</div>
+          <p>Superficie desinfectada y despejada, exclusiva para la preparación del inyectable.</p>
+        </div>
+        <div class="card">
+          <div class="k"><span class="num">2</span>Desinfección de la zona</div>
+          <p>Antisepsia del sitio de punción con movimiento único, de dentro hacia afuera.</p>
+        </div>
+        <div class="card">
+          <div class="k"><span class="num">3</span>Técnica estéril</div>
+          <p>Sin tocar la aguja ni el émbolo tras la desinfección de guantes.</p>
+        </div>
+      </div>
+
+      <div class="basis"><b>Base normativa:</b> Guías Técnicas Nacionales de Inyectoterapia y Protocolos de Atención del MINSA.</div>
+    </section>
+
+    <!-- 05 Los 10 correctos -->
+    <section class="block" id="correctos">
+      <div class="block-head"><h2>Los correctos de la administración</h2></div>
+      <p class="block-sub">Verificación obligatoria antes, durante y después de cada aplicación.</p>
+
+      <div class="correctos-grid">
+        <div class="correcto"><div class="k"><span class="num">1</span><h3>Paciente correcto</h3></div><p>Nombre completo, fecha de nacimiento y número de historia clínica.</p></div>
+        <div class="correcto"><div class="k"><span class="num">2</span><h3>Medicamento correcto</h3></div><p>Confirmar nombre del medicamento y principio activo.</p></div>
+        <div class="correcto"><div class="k"><span class="num">3</span><h3>Hora correcta</h3></div><p>Respetar los horarios programados de administración.</p></div>
+        <div class="correcto"><div class="k"><span class="num">4</span><h3>Dosis correcta</h3></div><p>Comprobar la dosis exacta a administrar.</p></div>
+        <div class="correcto"><div class="k"><span class="num">5</span><h3>Vía correcta</h3></div><p>Verificar la vía de administración prescrita (IM, IV, SC, ID).</p></div>
+        <div class="correcto"><div class="k"><span class="num">6</span><h3>Fecha de caducidad vigente</h3></div><p>Comprobar la fecha de vencimiento del medicamento.</p></div>
+        <div class="correcto"><div class="k"><span class="num">7</span><h3>Registro correcto</h3></div><p>Registrar la administración inmediatamente después de realizarla.</p></div>
+        <div class="correcto"><div class="k"><span class="num">8</span><h3>Indicación correcta</h3></div><p>Asegurar que el medicamento corresponda al tratamiento del paciente.</p></div>
+        <div class="correcto"><div class="k"><span class="num">9</span><h3>Verificar alergias</h3></div><p>Consultar el historial de alergias antes de aplicar.</p></div>
+        <div class="correcto"><div class="k"><span class="num">10</span><h3>Respuesta correcta</h3></div><p>Monitorear y evaluar los efectos del medicamento en el paciente.</p></div>
+      </div>
+    </section>
+
+    <!-- 06 Vias -->
+    <section class="block" id="vias">
+      <div class="block-head"><h2>Vías de administración</h2></div>
+      <p class="block-sub">Ángulo de punción, sitios anatómicos y uso clínico de cada vía.</p>
+
+      <div class="via-grid">
+        <div class="via-card">
+          <div class="diagram">
+            <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+              <line x1="20" y1="100" x2="140" y2="100" stroke="#12566B" stroke-width="2"/>
+              <rect x="20" y="95" width="120" height="8" fill="#12566B" opacity="0.15"/>
+              <line x1="80" y1="100" x2="80" y2="30" stroke="#A93B31" stroke-width="3"/>
+              <line x1="80" y1="30" x2="70" y2="38" stroke="#A93B31" stroke-width="3"/>
+              <line x1="80" y1="30" x2="90" y2="38" stroke="#A93B31" stroke-width="3"/>
+              <path d="M80 100 A 24 24 0 0 1 62 82" fill="none" stroke="#12566B" stroke-width="1.4" stroke-dasharray="2 2"/>
+              <text x="55" y="80" font-size="11" fill="#12566B" font-family="monospace">90°</text>
+            </svg>
+          </div>
+          <div class="body">
+            <h3>Intramuscular (IM)</h3>
+            <span class="angle-tag">Ángulo 90°</span>
+            <dl>
+              <dt>SITIOS</dt><dd>Deltoides, vasto lateral (muslo), glúteo (cuadrante superoexterno).</dd>
+              <dt>PROFUNDIDAD</dt><dd>Tejido muscular.</dd>
+              <dt>USO</dt><dd>Vacunas, medicamentos oleosos, antibióticos.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="via-card">
+          <div class="diagram">
+            <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+              <line x1="20" y1="100" x2="140" y2="100" stroke="#12566B" stroke-width="2"/>
+              <rect x="20" y="95" width="120" height="8" fill="#12566B" opacity="0.15"/>
+              <line x1="45" y1="100" x2="95" y2="55" stroke="#A93B31" stroke-width="3"/>
+              <line x1="95" y1="55" x2="84" y2="58" stroke="#A93B31" stroke-width="3"/>
+              <line x1="95" y1="55" x2="90" y2="67" stroke="#A93B31" stroke-width="3"/>
+              <path d="M75 100 A 30 30 0 0 1 62 78" fill="none" stroke="#12566B" stroke-width="1.4" stroke-dasharray="2 2"/>
+              <text x="55" y="92" font-size="11" fill="#12566B" font-family="monospace">45°</text>
+            </svg>
+          </div>
+          <div class="body">
+            <h3>Subcutánea (SC)</h3>
+            <span class="angle-tag">Ángulo 45°</span>
+            <dl>
+              <dt>SITIOS</dt><dd>Cara externa del brazo, abdomen, muslo.</dd>
+              <dt>PROFUNDIDAD</dt><dd>Tejido subcutáneo.</dd>
+              <dt>USO</dt><dd>Insulina, heparina.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="via-card">
+          <div class="diagram">
+            <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+              <line x1="20" y1="100" x2="140" y2="100" stroke="#12566B" stroke-width="2"/>
+              <rect x="20" y="95" width="120" height="8" fill="#12566B" opacity="0.15"/>
+              <line x1="40" y1="100" x2="110" y2="88" stroke="#A93B31" stroke-width="3"/>
+              <line x1="110" y1="88" x2="99" y2="86" stroke="#A93B31" stroke-width="3"/>
+              <line x1="110" y1="88" x2="103" y2="97" stroke="#A93B31" stroke-width="3"/>
+              <path d="M70 100 A 32 32 0 0 1 62 92" fill="none" stroke="#12566B" stroke-width="1.4" stroke-dasharray="2 2"/>
+              <text x="50" y="96" font-size="10" fill="#12566B" font-family="monospace">10–15°</text>
+            </svg>
+          </div>
+          <div class="body">
+            <h3>Intradérmica (ID)</h3>
+            <span class="angle-tag">Ángulo 10–15°</span>
+            <dl>
+              <dt>SITIOS</dt><dd>Cara anterior del antebrazo.</dd>
+              <dt>PROFUNDIDAD</dt><dd>Dermis superficial.</dd>
+              <dt>USO</dt><dd>Pruebas de alergia, BCG.</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout amber" style="margin-top:16px;">
+        <div>
+          <strong>Vía intravenosa (IV)</strong>
+          Ángulo variable de 25–30°, acceso directo al torrente sanguíneo a través de venas del antebrazo o dorso de la mano. Se reserva para medicación de acción rápida, fluidos y hemoderivados.
+        </div>
+    <img src="img/angulo.jpeg" alt="Angulo" class="imagen-ajustada">
+    </section>
+    
+
+
+    <!-- 07 Residuos -->
+    <section class="block" id="residuos">
+      <div class="block-head"><h2>Manejo de residuos hospitalarios</h2></div>
+      <p class="block-sub">Segregación inmediata en el punto de generación, según código de colores MINSA.</p>
+
+      <div class="residuos-grid">
+        <div class="bin-card">
+          <div class="bin-top"><span class="bin-swatch" style="background:var(--yellow-bin);"></span><h3>Punzocortantes</h3></div>
+          <p>Agujas, bisturís, ampollas. Contenedor rígido, de alta resistencia, símbolo universal de bioseguridad, llenado máximo 3/4 partes.</p>
+        </div>
+        <div class="bin-card">
+          <div class="bin-top"><span class="bin-swatch" style="background:var(--red);"></span><h3>Biocontaminados</h3></div>
+          <p>Jeringas sin aguja, gasas, algodones con sangre o fluidos. Bolsa roja, cierre hermético, impermeable.</p>
+        </div>
+        <div class="bin-card">
+          <div class="bin-top"><span class="bin-swatch" style="background:#2B3A40;"></span><h3>Comunes</h3></div>
+          <p>Envoltorios, papel, cartón, residuos de oficina. Bolsa negra, resistente, para almacenamiento temporal.</p>
+        </div>
+      </div>
+
+      <div class="flow-steps">
+        <div class="flow-step"><span class="num">1</span><p>Segregación inmediata en el punto de generación, apenas se usa el material.</p></div>
+        <div class="flow-step"><span class="num">2</span><p>Traslado en coche cerrado hacia el área de almacenamiento intermedio.</p></div>
+        <div class="flow-step"><span class="num">3</span><p>Almacenamiento central en área restringida, ventilada y señalizada, hasta su disposición final.</p></div>
+        </div>
+    <img src="img/residuos.jpeg" alt="residuos" class="imagen-ajustada">
+      </div>
+    </section>
+
+    <!-- 08 Marco legal -->
+    <section class="block" id="fuentes">
+      <div class="block-head"><h2>Marco legal de referencia</h2></div>
+      <div class="cards cols-2">
+        <div class="card"><p><b style="color:var(--ink);">NTS N° 144-MINSA/2018/DIGESA</b><br>Gestión Integral y Manejo de Residuos Sólidos en Establecimientos de Salud.</p></div>
+        <div class="card"><p><b style="color:var(--ink);">NTS N° 127-MINSA/2016/DIGESP</b><br>Salud Ocupacional en el Sector Salud.</p></div>
+        <div class="card"><p><b style="color:var(--ink);">D.S. N° 011-2019-TR</b><br>Reglamento de Seguridad y Salud en el Trabajo.</p></div>
+        <div class="card"><p><b style="color:var(--ink);">Ley N° 29783</b><br>Ley de Seguridad y Salud en el Trabajo.</p></div>
+      </div>
+    </section>
+
+  </main>
+  <!-- CONTACTANOS -->
+
+<section id="contactanos" class="contacto">
+
+    <h2>CONTÁCTANOS</h2>
+
+    <p class="contacto-subtitulo">
+        Si deseas lavado  de herida aplicación de medicamentos o más contáctanos
+    </p>
+
+    <div class="contacto-contenedor">
+
+        <div class="contacto-card">
+            <div class="contacto-icono">📞</div>
+
+            <h3>Teléfono</h3>
+
+            <p>927 606 794</p>
+        </div>
+        <div class="contacto-card">
+            <div class="contacto-icono">📞</div>
+
+            <h3>Teléfono</h3>
+
+            <p>930 041 871</p>
+        </div>
+        <div class="contacto-card">
+            <div class="contacto-icono">📞</div>
+
+            <h3>Teléfono</h3>
+
+            <p>940 579 893</p>
+        </div>
+
+    </div>
+
+</section>
+
+  <footer>
+    <div>Guía visual de referencia basada en normativas nacionales del MINSA. Para uso oficial, consulte las fuentes completas del MINSA.</div>
+    <div class="fuentes">Elaborado a partir de infografías internas de bioseguridad en inyectoterapia. No sustituye los protocolos oficiales impresos ni las directivas vigentes del establecimiento de salud.</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
